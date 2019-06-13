@@ -2,47 +2,36 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackManifestPlugin = require('webpack-manifest-plugin');
-const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
-  entry: ['./src/index.ts', 'webpack-hot-middleware/client'],
+  entry: './src/index.tsx',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist',
-    hotOnly: true
+    contentBase: './public',
+    compress: true,
+    port: 8899
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
   plugins: [
     new WebpackManifestPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Hot module replacement'
-    }),
-    new webpack.HotModuleReplacementPlugin()
+      title: 'dev',
+      template: './public/index.html'
+    })
   ],
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json']
+  },
+
   module: {
     rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader']
-      }
+      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
     ]
-  },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js']
-  },
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
   }
 };
