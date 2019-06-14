@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+
 const searchIcon = require('../../images/search-icon.svg');
 
 const SearchContainer = styled.div`

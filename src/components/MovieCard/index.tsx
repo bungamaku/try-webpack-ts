@@ -1,6 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Rating from 'components/Rating';
+
 const exampleImage = require('../../images/example.png');
 
 const CardContainer = styled.div`
@@ -33,6 +35,7 @@ export default function MovieCard() {
       <CoverImage src={exampleImage} alt='Example Image' />
       <InfoContainer>
         <Title to='/{id}'>Infinity War (2018)</Title>
+        <Rating ratingPoint={8.5} />
       </InfoContainer>
     </CardContainer>
   );
