@@ -25,13 +25,29 @@ module.exports = {
     })
   ],
   resolve: {
+    modules: ['src', 'node_modules'],
     extensions: ['.ts', '.tsx', '.js', '.json']
   },
 
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
+      {
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader'
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader'
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
+      }
     ]
   }
 };

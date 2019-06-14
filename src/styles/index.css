@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body {
+  background-color: #2a2a2a;
+}

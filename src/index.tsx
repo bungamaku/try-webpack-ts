@@ -1,9 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Hello } from './components/Hello';
+import App from './pages';
+import { BrowserRouter } from 'react-router-dom';
+import './styles/index.css';
 
 ReactDOM.render(
-  <Hello compiler='TypeScript' framework='React' />,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
   document.getElementById('root')
 );
