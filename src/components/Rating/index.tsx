@@ -11,11 +11,17 @@ const Star = styled.img`
   margin-right: 5px;
 `;
 
+const Rate = styled.span`
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+`;
+
 export interface Props {
   ratingPoint: number;
 }
 
-function getStar(ratingPoint: number) {
+function getStar(ratingPoint: number): any[] {
   let allStars: number = 5;
   let onStars: number = Math.floor(ratingPoint / 2);
   let result: any[] = [];
@@ -41,7 +47,7 @@ export default function Rating({ ratingPoint }: Props) {
   return (
     <div className='star'>
       <span>
-        {getStar(ratingPoint)} ({ratingPoint}/10)
+        {getStar(ratingPoint)} <Rate>({ratingPoint}/10)</Rate>
       </span>
     </div>
   );
